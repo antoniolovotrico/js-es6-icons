@@ -3,70 +3,135 @@ $(function () {
 
   const icone = [
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "gatto",
+      prefix : "fas",
+      type : "fa-cat",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "pesce",
+      prefix : "fas",
+      type : "fa-fish",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "cane",
+      prefix : "fas",
+      type : "fa-dog",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "cavallo",
+      prefix : "fas",
+      type : "fa-horse",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "drago",
+      prefix : "fas",
+      type : "fa-dragon",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "ippopotamo",
+      prefix : "fas",
+      type : "fa-hippo",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "colomba",
+      prefix : "fas",
+      type : "fa-dove",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "corvo",
+      prefix : "fas",
+      type : "fa-crow",
+      family : "animali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "carota",
+      prefix : "fas",
+      type : "fa-carrot",
+      family : "vegetali"
     },
     {
-      name : "",
-      prefix : "",
-      type : "",
-      family : ""
+      name : "limone",
+      prefix : "fas",
+      type : "fa-lemon",
+      family : "vegetali"
+    },
+    {
+      name : "mela",
+      prefix : "fas",
+      type : "fa-apple-alt",
+      family : "vegetali"
+    },
+    {
+      name : "Peperoncino",
+      prefix : "fas",
+      type : "fa-pepper-hot",
+      family : "vegetali"
+    },
+    {
+      name : "Ninja",
+      prefix : "fas",
+      type : "fa-user-ninja",
+      family : "utenti"
+    },
+    {
+      name : "Agente",
+      prefix : "fas",
+      type : "fa-user-secret",
+      family : "utenti"
+    },
+    {
+      name : "Laureato",
+      prefix : "fas",
+      type : "fa-user-graduate",
+      family : "utenti"
+    },
+    {
+      name : "Astronauta",
+      prefix : "fas",
+      type : "fa-user-astronaut",
+      family : "utenti"
     }
   ]
+  // <i class="fas fa-cat"></i>
+  // <i class="fas fa-fish"></i>
+  // <i class="fas fa-dog"></i>
+  // <i class="fas fa-horse"></i>
+  // <i class="fas fa-dragon"></i>
+  // <i class="fas fa-hippo"></i>
+  // <i class="fas fa-dove"></i>
+  // <i class="fas fa-crow"></i>
+  // <i class="fas fa-carrot"></i>
+  // <i class="fas fa-lemon"></i>
+  // <i class="fas fa-apple-alt"></i>
+  // <i class="fas fa-pepper-hot"></i>
+  // <i class="fas fa-user-ninja"></i>
+  // <i class="fas fa-user-graduate"></i>
+  // <i class="fas fa-user-secret"></i>
+  // <i class="fas fa-user-astronaut"></i>
 
-  // Semezioniamo il container icons
+  // Selezioniamo il container icons
+
+  const containerIcon = document.getElementById("icons");
+
 
   //inseriamo le icone nel container (possiamo creare una funzione tipo print() per inserire gli elementi e richiamarla qui)
+
+icone.forEach(icon => {
+  
+   containerIcon.innerHTML += `
+   <div>
+       <i class="${icon.prefix} ${icon.type}" style="color:blue"></i>
+       <div class="title">${icon.name}</div>
+   </div>
+   `; 
+});
 
 });
 

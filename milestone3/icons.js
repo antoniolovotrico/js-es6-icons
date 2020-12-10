@@ -134,9 +134,20 @@ $(function () {
 
   //estrapoliamo i tipi di icone
 
+  
+
   //aggiungiamo i tipi alla select
+  const containerSelect = document.getElementById("type");
+  containerSelect.innerHTML += `
+  <option>Animali</option>
+  <option>Vegetali</option>
+  <option>Utenti</option>
+`;
+
 
   //al change mostriamo solo le icone filtrate
+
+  
   //mostriamo come passare un parametro a change e contemporaneamente destrutturiamo
 
 

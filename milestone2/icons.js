@@ -101,36 +101,36 @@ $(function () {
 
   const containerIcon = document.getElementById("icons");
   
-  icone.forEach(icon => {
-  
-    containerIcon.innerHTML += `
-    <div>
-        <i class="${icon.prefix} ${icon.type}"></i>
-        <div class="title">${icon.name}</div>
-    </div>
-    `; 
- });
 
   // definiamo dei colori per le icone (blue, orange, purple)
-const user = icone.map((index) => {
-  console.log(index);
-  if (index.family === "animali") {
-    return "blue";
-  }else if (index.family === "vegetali") {
-    return "orange";
-  }else {
-    return "purple"
-  }
-});
-console.log(user);
-
-
-
-
   //aggiungiamo dei colori usando una funzione
-
-
   //inseriamo le icone colorate nel container
+  const colors = icone.map((index) => {
+    console.log(index);
+    if (index.family === "animali") {
+      return containerIcon.innerHTML += `
+      <div>
+        <i class="${index.prefix} ${index.type}" style="color:blue"></i>
+        <div class="title">${index.name}</div>
+    </div>
+    `; 
+    }else if (index.family === "vegetali") {
+      return containerIcon.innerHTML += `
+      <div>
+        <i class="${index.prefix} ${index.type}" style="color:orange"></i>
+        <div class="title">${index.name}</div>
+    </div>
+    `;
+    }else {
+      return containerIcon.innerHTML += `
+      <div>
+        <i class="${index.prefix} ${index.type}" style="color:purple"></i>
+        <div class="title">${index.name}</div>
+    </div>
+    `;
+    }
+  });
+  console.log(colors);
 
 });
 

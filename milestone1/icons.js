@@ -123,15 +123,7 @@ $(function () {
 
   //inseriamo le icone nel container (possiamo creare una funzione tipo print() per inserire gli elementi e richiamarla qui)
 
-icone.forEach(icon => {
-  
-   containerIcon.innerHTML += `
-   <div>
-       <i class="${icon.prefix} ${icon.type}" style="color:blue"></i>
-       <div class="title">${icon.name}</div>
-   </div>
-   `; 
-});
+stampaOggetto(icone , containerIcon);
 
 });
 
@@ -140,4 +132,16 @@ icone.forEach(icon => {
 // Creiamo una funzione per iterare nell'array e che appenda al container le icone.
 // tip: possiamo usare un ciclo foreach qui e destrutturare gli le proprieta degli elementi di un array
 // tip: il template literal ci puo aiutare con il markup
-
+function stampaOggetto (arrSelection,contenitore) {
+  arrSelection.forEach(elemento => {
+    //Destrutturare l'elemento 
+    const {name , prefix , type} = elemento;
+    //Stampiamo la funzione in Html utilizzando la proprietà JavaScrip .innerHTML ed il Template Literals
+    contenitore.innerHTML += `
+    <div>
+        <i class="${prefix} ${type}" style="color:blue"></i>
+        <div class="title">${name}</div>
+    </div>
+    `; 
+});
+}

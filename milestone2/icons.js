@@ -99,48 +99,67 @@ $(function () {
     }
   ];
 
-  const containerIcon = document.getElementById("icons");
+  const containerIcon = document.querySelector(".icons");
   
-
+  
   // definiamo dei colori per le icone (blue, orange, purple)
   //aggiungiamo dei colori usando una funzione
   //inseriamo le icone colorate nel container
-  const colors = icone.map((index) => {
-    console.log(index);
-    if (index.family === "animali") {
-      return containerIcon.innerHTML += `
-      <div>
-        <i class="${index.prefix} ${index.type}" style="color:blue"></i>
-        <div class="title">${index.name}</div>
-    </div>
-    `; 
-    }else if (index.family === "vegetali") {
-      return containerIcon.innerHTML += `
-      <div>
-        <i class="${index.prefix} ${index.type}" style="color:orange"></i>
-        <div class="title">${index.name}</div>
-    </div>
-    `;
+  const iconeColored = icone.map((elemento) => {
+    //console.log(elemento);
+    if (elemento.family === "animali") {
+      var colore = "blue";
+    }else if (elemento.family === "vegetali") {
+      var colore = "orange";
     }else {
-      return containerIcon.innerHTML += `
-      <div>
-        <i class="${index.prefix} ${index.type}" style="color:purple"></i>
-        <div class="title">${index.name}</div>
-    </div>
-    `;
+      var colore = "purple";
     }
+    let coloredElement = {...elemento , color : colore}
+    //console.log(coloredElement);
+    return coloredElement
+    
   });
-  console.log(colors);
+  console.log(iconeColored);
+  
+  stampaOggettoColorato(iconeColored , containerIcon);
 
 });
+
 
 
 /* ---- FUNCTIONS ----*/
 //1. Funzione milestone 1
 
+function stampaOggetto (arrSelection,contenitore) {
+  arrSelection.forEach(elemento => {
+    //Destrutturare l'elemento 
+    const {name , prefix , type} = elemento;
+    //Stampiamo la funzione in Html utilizzando la proprietà JavaScrip .innerHTML ed il Template Literals
+    contenitore.innerHTML += `
+    <div>
+        <i class="${prefix} ${type}" style="color:blue"></i>
+        <div class="title">${name}</div>
+    </div>
+    `; 
+});
+}
+
 
 //2. funzione per assegnare un colore ad un icona
 // tip: possiamo invocare qui dentro un'altra funzione (2) oppure usare map 
+function stampaOggettoColorato (arrSelection,contenitore) {
+  arrSelection.forEach(elemento => {
+    //Destrutturare l'elemento 
+    const {name , prefix , type , color} = elemento;
+    //Stampiamo la funzione in Html utilizzando la proprietà JavaScrip .innerHTML ed il Template Literals
+    contenitore.innerHTML += `
+    <div>
+        <i class="${prefix} ${type}" style="color:${color}"></i>
+        <div class="title">${name}</div>
+    </div>
+    `; 
+});
+}
 
 
 //3. funzione per ottenere da un array

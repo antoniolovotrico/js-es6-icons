@@ -118,7 +118,7 @@ $(function () {
 
   // Selezioniamo il container icons
 
-  const containerIcon = document.getElementById("icons");
+  const containerIcon = document.querySelector(".icons");
 
 
   //inseriamo le icone nel container (possiamo creare una funzione tipo print() per inserire gli elementi e richiamarla qui)

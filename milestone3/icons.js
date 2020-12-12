@@ -102,35 +102,25 @@ $(function () {
 
   // colori come da milestone 2
  
-  const containerIcon = document.getElementById("icons");
+  const containerIcon = document.querySelector(".icons");
 
   //aggiungiamo dei colori come da milestone 2
   //inseriamo le icone nel container come da milestone 2
-  const colors = icone.map((index) => {
-    console.log(index);
-    if (index.family === "animali") {
-      return containerIcon.innerHTML += `
-      <div>
-        <i class="${index.prefix} ${index.type}" style="color:blue"></i>
-        <div class="title">${index.name}</div>
-    </div>
-    `; 
-    }else if (index.family === "vegetali") {
-      return containerIcon.innerHTML += `
-      <div>
-        <i class="${index.prefix} ${index.type}" style="color:orange"></i>
-        <div class="title">${index.name}</div>
-    </div>
-    `;
-    }else {
-      return containerIcon.innerHTML += `
-      <div>
-        <i class="${index.prefix} ${index.type}" style="color:purple"></i>
-        <div class="title">${index.name}</div>
-    </div>
-    `;
-    }
+  const iconeColored = icone.map((elemento) => {
+    //console.log(elemento);
+    //rispetto la milestone 2 nel metodo .map prima destrutturo l'elemento
+    let {name , prefix , type ,family} = elemento;
+    //dopo averlo destrutturato utilizio l'operatore ternario per utilizzare la forma contratta sostituendo i condizionali if/else.
+    let colore = (family === "animali") ? "blue": (family === "vegetali") ? "orange":"purple";
+    
+    let coloredElement = {...elemento , color : colore}
+    //console.log(coloredElement);
+    return coloredElement
+    
   });
+  console.log(iconeColored);
+  
+  stampaOggettoColorato(iconeColored , containerIcon);
 
   //estrapoliamo i tipi di icone
 
@@ -143,9 +133,32 @@ $(function () {
   <option>Vegetali</option>
   <option>Utenti</option>
 `;
+var indexFamily = iconeColored.find(elemento => elemento.family === "hhh");
+console.log(indexFamily);
 
+//   let arr = [
+//     { name:"string 1", value:"this", other: "that" },
+//     { name:"string 2", value:"this", other: "that" }
+// ];
+
+// let obj = arr.find(o => o.name === 'string 1');
+
+// console.log(obj);
 
   //al change mostriamo solo le icone filtrate
+
+  containerSelect.addEventListener("change", event => {
+    
+    //creare una costante rappresentante di un nuovo array filtrato per famiglie che cambierà al change dell'evento
+    const iconeFiltrate = iconeColored.filter(elemento => {
+      
+      return elemento.family = indexFamily;
+      console.log(iconeFiltrate);
+    });
+    
+    //console.log(iconeFiltrate);
+  })
+  //console.log(containerSelect);
 
   
   //mostriamo come passare un parametro a change e contemporaneamente destrutturiamo
@@ -153,5 +166,18 @@ $(function () {
 
 
 /* ---- FUNCTIONS ----*/
+function stampaOggettoColorato (arrSelection,contenitore) {
+  arrSelection.forEach(elemento => {
+    //Destrutturare l'elemento 
+    const {name , prefix , type , color} = elemento;
+    //Stampiamo la funzione in Html utilizzando la proprietà JavaScrip .innerHTML ed il Template Literals
+    contenitore.innerHTML += `
+    <div>
+        <i class="${prefix} ${type}" style="color:${color}"></i>
+        <div class="title">${name}</div>
+    </div>
+    `; 
+});
+}
 
 });

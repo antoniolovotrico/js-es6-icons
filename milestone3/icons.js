@@ -144,6 +144,7 @@ $(function () {
       if (choice == "animali" || choice == "vegetali" || choice == "utenti"){
         containerIcon.innerHTML = "";
         stampaOggettoColorato(iconeFiltrate,containerIcon);
+        // condizione nel caso in cui si seleziona all
       }else {
         containerIcon.innerHTML = "";
         stampaOggettoColorato(iconeColored,containerIcon);

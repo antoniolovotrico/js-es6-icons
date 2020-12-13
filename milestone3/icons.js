@@ -118,47 +118,39 @@ $(function () {
     return coloredElement
     
   });
-  console.log(iconeColored);
+  //console.log(iconeColored);
   
   stampaOggettoColorato(iconeColored , containerIcon);
 
   //estrapoliamo i tipi di icone
-
-  
-
   //aggiungiamo i tipi alla select
   const containerSelect = document.getElementById("type");
   containerSelect.innerHTML += `
-  <option>Animali</option>
-  <option>Vegetali</option>
-  <option>Utenti</option>
+  <option value="animali">Animali</option>
+  <option value="vegetali">Vegetali</option>
+  <option value="utenti">Utenti</option>
 `;
-var indexFamily = iconeColored.find(elemento => elemento.family === "hhh");
-console.log(indexFamily);
-
-//   let arr = [
-//     { name:"string 1", value:"this", other: "that" },
-//     { name:"string 2", value:"this", other: "that" }
-// ];
-
-// let obj = arr.find(o => o.name === 'string 1');
-
-// console.log(obj);
 
   //al change mostriamo solo le icone filtrate
 
   containerSelect.addEventListener("change", event => {
-    
+    //creare una variabile che identifichi la scelta compiuta con event change
+    var choice = containerSelect.options[containerSelect.selectedIndex].value;
+    console.log(choice);
     //creare una costante rappresentante di un nuovo array filtrato per famiglie che cambierà al change dell'evento
-    const iconeFiltrate = iconeColored.filter(elemento => {
-      
-      return elemento.family = indexFamily;
+    const iconeFiltrate = iconeColored.filter(elemento =>  elemento.family == choice);
       console.log(iconeFiltrate);
-    });
-    
-    //console.log(iconeFiltrate);
+
+      if (choice == "animali" || choice == "vegetali" || choice == "utenti"){
+        containerIcon.innerHTML = "";
+        stampaOggettoColorato(iconeFiltrate,containerIcon);
+      }else {
+        containerIcon.innerHTML = "";
+        stampaOggettoColorato(iconeColored,containerIcon);
+      }
+      
   })
-  //console.log(containerSelect);
+  
 
   
   //mostriamo come passare un parametro a change e contemporaneamente destrutturiamo

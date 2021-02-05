@@ -138,8 +138,14 @@ $(function () {
     var choice = containerSelect.options[containerSelect.selectedIndex].value;
     console.log(choice);
     //creare una costante rappresentante di un nuovo array filtrato per famiglie che cambierà al change dell'evento
-    const iconeFiltrate = iconeColored.filter(elemento =>  elemento.family == choice);
+    const iconeFiltrate = iconeColored.filter(elemento => {
+      if (elemento.family == choice){
+        return elemento;
+      }
+    });
       console.log(iconeFiltrate);
+    
+      
       //commentato primo if sotto consiglio di Raffaele perchè poco utile e sostituito con un più chiaro e snello if(choice)
       //if (choice == "animali" || choice == "vegetali" || choice == "utenti"){
         if (choice) {
